@@ -9,16 +9,25 @@ const Todo = () => {
     if (data.trim().length !== 0) {
       setListTodo((prevData) => {
         const todoValue = [...prevData];
-        todoValue.unshift({ todo: data, id: Math.random().toString() });
+        todoValue.unshift({ todo: data, id: Date.now().toString() });
         return todoValue;
       });
     }
   };
 
+  const handleDeleteTodo = (id) => {
+    setListTodo((prevData) => {
+      const delTodo = prevData.filter((data) => data.id !== id);
+      return delTodo;
+    });
+  };
+
   return (
     <Fragment>
       <TodoForm onAddTodo={handleAddTodo} />
-      {listTodo.length > 0 && <TodoList listData={listTodo} />}
+      {listTodo.length > 0 && (
+        <TodoList listData={listTodo} onDeleteTodo={handleDeleteTodo} />
+      )}
     </Fragment>
   );
 };
