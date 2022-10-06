@@ -3,7 +3,7 @@ import classes from "./TodoForm.module.css";
 
 const TodoForm = (props) => {
   return (
-    <Card className={classes.form}>
+    <Card className={classes.input}>
       <label>Input Todo</label>
       <input type="text" />
       <button>Add</button>
