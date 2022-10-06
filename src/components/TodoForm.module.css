@@ -1,5 +1,6 @@
 .input {
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding-top: 10px;
   padding: 1rem;
   width: 90%;
   max-width: 40rem;
@@ -32,10 +33,11 @@
 }
 
 .input button {
-  width: 15%;
+  width: 25%;
   background-color: #2d9844;
   color: white;
   border: none;
+  height: 30px;
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
   cursor: pointer;
