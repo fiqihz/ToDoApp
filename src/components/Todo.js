@@ -3,25 +3,22 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 const Todo = () => {
-  const [listTodo, setListTodo] = useState([
-    {
-      id: "l1",
-      todo: "Tidur",
-    },
-    {
-      id: "l2",
-      todo: "Bobo",
-    },
-  ]);
+  const [listTodo, setListTodo] = useState([]);
+
+  const handleAddTodo = (data) => {
+    if (data.trim().length !== 0) {
+      setListTodo((prevData) => {
+        const todoValue = [...prevData];
+        todoValue.unshift({ todo: data, id: Math.random().toString() });
+        return todoValue;
+      });
+    }
+  };
 
   return (
     <Fragment>
-      <TodoForm />
-      {listTodo.map((data) => (
-        <div key={data.id}>
-          <TodoList listData={data.todo} />
-        </div>
-      ))}
+      <TodoForm onAddTodo={handleAddTodo} />
+      {listTodo.length > 0 && <TodoList listData={listTodo} />}
     </Fragment>
   );
 };

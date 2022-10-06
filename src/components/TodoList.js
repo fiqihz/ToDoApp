@@ -4,8 +4,12 @@ import classes from "./TodoList.module.css";
 const TodoList = (props) => {
   return (
     <Card className={classes.list}>
-      <p>{props.listData}</p>
-      <button>Delete</button>
+      {props.listData.map((data) => (
+        <ul>
+          <li>{data.todo}</li>
+          <hr />
+        </ul>
+      ))}
     </Card>
   );
 };

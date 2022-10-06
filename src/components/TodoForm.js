@@ -1,12 +1,25 @@
+import { useState } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./TodoForm.module.css";
 
 const TodoForm = (props) => {
+  const [enteredTodo, setEnteredTodo] = useState("");
+
+  const handleChangeTodo = (event) => {
+    setEnteredTodo(event.target.value);
+  };
+
+  const handleSubmitTodo = (event) => {
+    event.preventDefault();
+    props.onAddTodo(enteredTodo);
+    setEnteredTodo("");
+  };
+
   return (
     <Card className={classes.input}>
-      <form>
+      <form onSubmit={handleSubmitTodo}>
         <label>Input Todo</label>
-        <input type="text" />
+        <input type="text" value={enteredTodo} onChange={handleChangeTodo} />
         <button type="submit">Add</button>
       </form>
     </Card>
